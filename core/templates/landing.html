@@ -12,9 +12,9 @@
       <p class="text-xl text-gray-600 mb-10">Simplify tax preparation with AI document analysis, CPA collaboration, and automated review.</p>
 
       <div class="flex justify-center gap-6">
-        <a href="{% url 'client_dashboard' %}" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg">I'm a Client</a>
+        <a href="{% url 'select_role' 'client' %}" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg">I'm a Client</a>
 
-        <a href="{% url 'cpa_dashboard' %}" class="bg-slate-900 text-white px-8 py-4 rounded-lg text-lg">I'm a CPA</a>
+        <a href="{% url 'select_role' 'cpa' %}" class="bg-slate-900 text-white px-8 py-4 rounded-lg text-lg">I'm a CPA</a>
       </div>
     </div>
   </div>

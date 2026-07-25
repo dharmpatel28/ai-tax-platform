@@ -7,25 +7,34 @@ from pathlib import Path
 
 
 def landing(request):
+    role = request.session.get("role")
+    
+    if role:
+        request.session["user_role"] = role
+        request.session.modified = True
+
     return render(request, "landing.html")
 
 
 def select_role(request, role):
     request.session["role"] = role
+    request.session["user_role"] = role
+    request.session.modified = True
 
-    if role:
-        request.session["user_role"] = role
-        request.session.modified = True
+    print("ROLE SET TO:", role)
 
     if role == "client":
         return redirect("client_dashboard")
 
     return redirect("cpa_dashboard")
 
-
 def client_dashboard(request):
 
-    request.session["role"] = "client"
+    role = request.session.get("role")
+    
+    if role:
+        request.session["user_role"] = role
+        request.session.modified = True
 
     return render(request, "client/dashboard.html", {
         "role": "client"
@@ -41,6 +50,12 @@ def client_dashboard(request):
 #     })
 
 def cpa_dashboard(request):
+
+    role = request.session.get("role")
+    
+    if role:
+        request.session["user_role"] = role
+        request.session.modified = True
 
     priority_tasks = [
 
@@ -96,6 +111,7 @@ def cpa_dashboard(request):
 
 
 def returns_list(request):
+
     role = request.session.get("role")
 
     if role:
@@ -105,6 +121,9 @@ def returns_list(request):
     print("=" * 40)
     print("ROLE:", role)
     print("=" * 40)
+
+    print("SESSION:", dict(request.session))
+    print("ROLE:", request.session.get("role"))
 
     with open("core/mock_data/returns.json") as f:
         returns = json.load(f)
@@ -126,6 +145,12 @@ def returns_list(request):
 
 
 def return_detail(request, return_id):
+
+    role = request.session.get("role")
+    
+    if role:
+        request.session["user_role"] = role
+        request.session.modified = True
 
     with open("core/mock_data/returns.json") as f:
         returns = json.load(f)
@@ -157,6 +182,12 @@ def return_detail(request, return_id):
 
 def document_detail(request, document_id):
 
+    role = request.session.get("role")
+    
+    if role:
+        request.session["user_role"] = role
+        request.session.modified = True
+
     documents = load_json("documents.json")
 
     document = next(
@@ -174,8 +205,6 @@ def document_detail(request, document_id):
 
 
 def returns(request):
-    with open("core/mock_data/returns.json") as f:
-        returns = json.load(f)
 
     role = request.session.get("role")
 
@@ -261,6 +290,12 @@ def ai_review(request):
 
 def ai_review_detail(request, id):
 
+    role = request.session.get("role")
+    
+    if role:
+        request.session["user_role"] = role
+        request.session.modified = True
+
     return render(
         request,
         "cpa/ai_review_detail.html",
@@ -290,6 +325,12 @@ def status(request):
 
 def client_ai_chat(request):
 
+    role = request.session.get("role")
+    
+    if role:
+        request.session["user_role"] = role
+        request.session.modified = True
+
     return render(
         request,
         "client/ai_chat.html",
@@ -300,6 +341,12 @@ def client_ai_chat(request):
 
 
 def return_workplace(request, id):
+
+    role = request.session.get("role")
+    
+    if role:
+        request.session["user_role"] = role
+        request.session.modified = True
 
     return_data = {
 

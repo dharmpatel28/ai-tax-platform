@@ -16,13 +16,14 @@
 
 
 <body class="bg-gray-100">
+    {% if request.session.role and request.resolver_match.url_name != "landing" %}
  <div>
         DEBUG ROLE: {{ request.session.user_role }}
     </div>
 <div class="flex h-screen">
 
     {% comment %} {% if request.session.role %} {% endcomment %}
-    {% if request.session.role and request.resolver_match.url_name != "landing" %}
+    
 
     <!-- Sidebar -->
     <aside class="w-64 bg-slate-900 text-white">
