@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% block page_title %}Messages{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto space-y-6">
+  <nav class="text-sm text-gray-500">
+    <a href="{% url 'cpa_dashboard' %}" class="text-blue-600">Dashboard</a>
+    <span class="mx-2">/</span>
+    <span>Messages</span>
+  </nav>
+
+  <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+    <p class="text-sm text-blue-800 font-medium">Context</p>
+    <p class="text-sm text-blue-700">
+      Return #1001 · Document: Bank Statement.pdf · Issue: Missing supporting document
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="lg:col-span-2 bg-white rounded-xl shadow p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h1 class="text-2xl font-bold">Issue Thread</h1>
+        <span class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-sm">Waiting on client</span>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-gray-100 rounded-xl p-4">
+          <p class="text-sm font-semibold">CPA to Client</p>
+          <p class="text-sm text-gray-700 mt-1">Please upload your mortgage statement for Return #1001.</p>
+          <p class="text-xs text-gray-500 mt-2">Client-visible · Owner next: Client</p>
+        </div>
+
+        <div class="bg-blue-100 rounded-xl p-4">
+          <p class="text-sm font-semibold">Client reply</p>
+          <p class="text-sm text-gray-700 mt-1">I uploaded the document, but I am not sure if this is the correct one.</p>
+          <p class="text-xs text-gray-500 mt-2">Visible to CPA and client</p>
+        </div>
+
+        <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+          <p class="text-sm font-semibold">Internal CPA note</p>
+          <p class="text-sm text-gray-700 mt-1">Uploaded file appears to be a bank summary, not the mortgage statement. Request corrected document.</p>
+          <p class="text-xs text-gray-500 mt-2">Internal only · Not visible to client</p>
+        </div>
+      </div>
+
+      <div class="mt-6 space-y-3">
+        <label class="block text-sm font-medium">Reply</label>
+        <textarea class="w-full border rounded-lg p-3" rows="4" placeholder="Write a message tied to this issue..."></textarea>
+        <div class="flex flex-wrap gap-3">
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-lg">Send to client</button>
+          <button class="bg-gray-800 text-white px-4 py-2 rounded-lg">Save internal note</button>
+          <a href="{% url 'document_detail' 1 %}" class="bg-gray-100 px-4 py-2 rounded-lg">Open document</a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="bg-white rounded-xl shadow p-6 space-y-4">
+      <h2 class="text-lg font-bold">Issue details</h2>
+      <div>
+        <p class="text-sm text-gray-500">Linked return</p>
+        <a href="{% url 'return_detail' 1 %}" class="text-blue-600">Return #1001</a>
+      </div>
+      <div>
+        <p class="text-sm text-gray-500">Linked document</p>
+        <a href="{% url 'document_detail' 1 %}" class="text-blue-600">Bank Statement.pdf</a>
+      </div>
+      <div>
+        <p class="text-sm text-gray-500">Outstanding request</p>
+        <p class="font-medium text-red-600">Correct mortgage statement still needed</p>
+      </div>
+      <div>
+        <p class="text-sm text-gray-500">Next action owner</p>
+        <p class="font-medium">Client</p>
+      </div>
+    </aside>
+  </div>
+</div>
+{% endblock %}
+{% comment %} {% extends "base.html" %}
+
+{% block page_title %}
+Messages
+{% endblock %}
+
+
+{% block content %}
+
+<div class="max-w-6xl mx-auto">
+
+
+<h2 class="text-2xl font-bold mb-6">
+Client Messages
+</h2>
+
+
+
+<div class="grid grid-cols-3 gap-6">
+
+
+<!-- Client List -->
+
+<div class="bg-white rounded shadow p-4">
+
+
+<h3 class="font-bold mb-4">
+Clients
+</h3>
+
+
+<div class="border-b p-3 hover:bg-gray-100 cursor-pointer">
+
+John Doe
+
+<p class="text-sm text-gray-500">
+Last message: Need W2
+</p>
+
+</div>
+
+
+<div class="border-b p-3 hover:bg-gray-100 cursor-pointer">
+
+Sarah Smith
+
+<p class="text-sm text-gray-500">
+Document uploaded
+</p>
+
+</div>
+
+
+<div class="p-3 hover:bg-gray-100 cursor-pointer">
+
+Mike Johnson
+
+<p class="text-sm text-gray-500">
+Waiting response
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+<!-- Chat -->
+
+<div class="col-span-2 bg-white rounded shadow p-6">
+
+
+<h3 class="font-bold text-lg mb-4">
+John Doe
+</h3>
+
+
+
+<div class="space-y-4 h-80 overflow-y-auto">
+
+
+<div class="bg-gray-100 p-3 rounded">
+
+Client:
+
+<br>
+
+I uploaded my W2 document.
+
+</div>
+
+
+
+<div class="bg-blue-100 p-3 rounded">
+
+CPA:
+
+<br>
+
+Thank you. I will review it.
+
+</div>
+
+
+
+<div class="bg-gray-100 p-3 rounded">
+
+Client:
+
+<br>
+
+Do you need anything else?
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="mt-5 flex gap-3">
+
+
+<input
+type="text"
+placeholder="Type message..."
+class="border rounded p-3 flex-1">
+
+
+<button
+class="bg-blue-600 text-white px-5 rounded">
+
+Send
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+{% endblock %} {% endcomment %}

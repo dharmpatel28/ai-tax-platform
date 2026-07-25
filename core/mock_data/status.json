@@ -1,0 +1,31 @@
+[
+    {
+        "return_id": 1,
+        "steps": [
+            {
+                "title": "Documents Uploaded",
+                "completed": true
+            },
+            {
+                "title": "AI Extraction",
+                "completed": true
+            },
+            {
+                "title": "CPA Review",
+                "completed": true
+            },
+            {
+                "title": "Waiting for Client",
+                "completed": false
+            },
+            {
+                "title": "Ready to File",
+                "completed": false
+            },
+            {
+                "title": "Filed",
+                "completed": false
+            }
+        ]
+    }
+]

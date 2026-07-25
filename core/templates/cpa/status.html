@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}
+Return Status
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="max-w-7xl mx-auto">
+
+
+<h2 class="text-2xl font-bold mb-6">
+Tax Return Status
+</h2>
+
+
+
+<div class="bg-white rounded shadow p-6 mb-6">
+
+
+<h3 class="text-xl font-bold mb-6">
+Client Progress
+</h3>
+
+
+
+<div class="space-y-6">
+
+
+<div class="flex items-center">
+
+<div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center">
+✓
+</div>
+
+<div class="ml-4">
+
+<h4 class="font-bold">
+Documents Uploaded
+</h4>
+
+<p class="text-gray-500">
+All required tax documents received
+</p>
+
+</div>
+
+</div>
+
+
+
+
+<div class="flex items-center">
+
+
+<div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center">
+✓
+</div>
+
+
+<div class="ml-4">
+
+<h4 class="font-bold">
+AI Extraction Completed
+</h4>
+
+<p class="text-gray-500">
+Income and deductions analyzed
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="flex items-center">
+
+
+<div class="w-10 h-10 rounded-full bg-yellow-500 text-white flex items-center justify-center">
+!
+</div>
+
+
+<div class="ml-4">
+
+<h4 class="font-bold">
+CPA Review Pending
+</h4>
+
+<p class="text-gray-500">
+Review deductions and verify information
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="flex items-center">
+
+
+<div class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center">
+4
+</div>
+
+
+<div class="ml-4">
+
+<h4 class="font-bold">
+IRS Submission
+</h4>
+
+<p class="text-gray-500">
+Waiting for approval
+</p>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="grid grid-cols-3 gap-6">
+
+
+<div class="bg-white rounded shadow p-6">
+
+<p class="text-gray-500">
+Active Returns
+</p>
+
+<h1 class="text-4xl font-bold">
+25
+</h1>
+
+</div>
+
+
+
+
+<div class="bg-white rounded shadow p-6">
+
+<p class="text-gray-500">
+Pending Review
+</p>
+
+<h1 class="text-4xl font-bold text-yellow-600">
+5
+</h1>
+
+</div>
+
+
+
+
+<div class="bg-white rounded shadow p-6">
+
+<p class="text-gray-500">
+Completed
+</p>
+
+<h1 class="text-4xl font-bold text-green-600">
+18
+</h1>
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+{% endblock %}

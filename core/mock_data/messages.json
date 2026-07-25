@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "return_id": 1,
+        "sender": "Sarah Johnson",
+        "message": "Please upload your 1099.",
+        "internal": false
+    },
+    {
+        "id": 2,
+        "return_id": 1,
+        "sender": "Sarah Johnson",
+        "message": "Income needs manual verification.",
+        "internal": true
+    }
+]

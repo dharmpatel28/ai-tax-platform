@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% block page_title %}Document Detail{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto space-y-6">
+  <nav class="text-sm text-gray-500">
+    <a href="{% url 'cpa_dashboard' %}" class="text-blue-600">Dashboard</a>
+    <span class="mx-2">/</span>
+    <a href="{% url 'documents' %}" class="text-blue-600">Documents</a>
+    <span class="mx-2">/</span>
+    <span>{{ document.name|default:"W2.pdf" }}</span>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="lg:col-span-2 bg-white rounded-xl shadow p-6">
+      <h1 class="text-2xl font-bold mb-4">{{ document.name|default:"W2.pdf" }}</h1>
+      <div class="bg-gray-50 rounded-xl p-6 min-h-[420px] flex items-center justify-center text-gray-400">
+        Document preview placeholder · highlight Page 1 Box 1 here
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="border rounded-xl p-4">
+          <p class="text-sm text-gray-500">Extracted value</p>
+          <p class="font-semibold">$82,450</p>
+          <p class="text-sm text-gray-600">Page 1 · Box 1</p>
+        </div>
+        <div class="border rounded-xl p-4">
+          <p class="text-sm text-gray-500">Linked field</p>
+          <p class="font-semibold">Wages, salaries, tips</p>
+          <a href="{% url 'return_detail' 1 %}" class="text-blue-600 text-sm mt-2 inline-block">Open return review</a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="bg-white rounded-xl shadow p-6 space-y-4">
+      <h2 class="text-lg font-bold">Connected workflow</h2>
+      <div>
+        <p class="text-sm text-gray-500">Related return</p>
+        <a href="{% url 'return_detail' 1 %}" class="text-blue-600">Return #1001</a>
+      </div>
+      <div>
+        <p class="text-sm text-gray-500">Related issue</p>
+        <p class="font-medium">Withholding mismatch review</p>
+      </div>
+      <div>
+        <p class="text-sm text-gray-500">Related thread</p>
+        <a href="{% url 'messages' %}?return_id=1&document_id=1" class="text-blue-600">Open issue messages</a>
+      </div>
+      <div>
+        <p class="text-sm text-gray-500">Status</p>
+        <span class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-sm">Pending CPA review</span>
+      </div>
+    </aside>
+  </div>
+</div>
+{% endblock %}
+{% comment %} --------------------------------------------------------------------------------------- {% endcomment %}
+{% comment %} {% extends "base.html" %}
+
+{% block title %}
+Document Review
+{% endblock %}
+
+{% block content %}
+
+<div class="max-w-7xl mx-auto">
+
+    <a href="{% url 'documents' %}"
+       class="text-blue-600 hover:underline">
+
+        ← Back to Documents
+
+    </a>
+
+    <div class="flex justify-between items-center mt-4">
+
+        <h1 class="text-3xl font-bold">
+
+            {{ document.name }}
+
+        </h1>
+
+        <span class="px-4 py-2 bg-green-100 text-green-700 rounded-full">
+
+            {{ document.status }}
+
+        </span>
+
+    </div>
+
+    <div class="grid grid-cols-2 gap-6 mt-8">
+
+        <!-- PDF Preview -->
+        <div class="bg-white rounded-xl shadow p-6">
+
+            <h2 class="font-bold mb-4">
+                PDF Preview
+            </h2>
+
+            <div class="h-96 bg-gray-100 border rounded-lg flex items-center justify-center">
+
+                <span class="text-gray-400">
+                    PDF Preview Placeholder
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- AI Extraction -->
+        <div class="bg-white rounded-xl shadow p-6">
+
+            <h2 class="font-bold mb-4">
+                AI Extracted Fields
+            </h2>
+
+            {% for key, value in document.ai_fields.items %}
+
+            <div class="flex justify-between border-b py-3">
+
+                <span class="text-gray-500">
+
+                    {{ key }}
+
+                </span>
+
+                <span class="font-semibold">
+
+                    {{ value }}
+
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="mt-8 bg-white rounded-xl shadow p-6">
+
+        <h2 class="font-bold mb-4">
+
+            Reviewer Notes
+
+        </h2>
+
+        <textarea
+            rows="5"
+            class="w-full border rounded-lg p-3"
+            placeholder="Add review notes..."></textarea>
+
+        <div class="mt-6 flex gap-4">
+
+            <button
+                class="bg-green-600 text-white px-6 py-3 rounded-lg">
+
+                Approve Document
+
+            </button>
+
+            <button
+                class="bg-yellow-500 text-white px-6 py-3 rounded-lg">
+
+                Request Correction
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %} {% endcomment %}

@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+  Return Workspace
+{% endblock %}
+
+{% block content %}
+  <div class="max-w-7xl mx-auto">
+    <!-- Breadcrumb -->
+
+    <div class="text-sm text-gray-500 mb-5">
+      <a href="{% url 'cpa_dashboard' %}" class="text-blue-600">Dashboard</a>
+
+      /
+
+      <a href="{% url 'returns' %}" class="text-blue-600">Returns</a>
+
+      /
+
+      John Doe
+
+      /
+
+      2026 Return
+    </div>
+
+    <!-- Return Header -->
+
+    <div class="bg-white rounded shadow p-6 mb-6 flex justify-between">
+      <div>
+        <h1 class="text-3xl font-bold">John Doe - 2026 Tax Return</h1>
+
+        <p class="text-gray-500 mt-2">Return ID: #1001</p>
+      </div>
+
+      <div>
+        <span class="bg-yellow-100 text-yellow-700 px-4 py-2 rounded">CPA Review Pending</span>
+      </div>
+    </div>
+
+    <!-- Next Action -->
+
+    <div class="bg-blue-50 border border-blue-200 rounded p-5 mb-6">
+      <h3 class="font-bold text-lg">Next Action</h3>
+
+      <p class="mt-3">
+        👤 Owner:
+
+        <strong>CPA</strong>
+      </p>
+
+      <p>
+        Task:
+
+        <strong>Verify deduction documents</strong>
+      </p>
+
+      <p>
+        Due:
+
+        <strong>Tomorrow</strong>
+      </p>
+    </div>
+
+    <!-- Workflow Navigation -->
+
+    <div class="grid grid-cols-5 gap-4 mb-6">
+      <a href="{% url 'documents' %}?return=1" class="bg-white p-5 rounded shadow text-center hover:bg-gray-100">
+        📄
+
+        <br />
+
+        Documents
+      </a>
+
+      <a href="{% url 'ai_review' %}?return=1" class="bg-white p-5 rounded shadow text-center hover:bg-gray-100">
+        🤖
+
+        <br />
+
+        AI Review
+      </a>
+
+      <a href="#messages" class="bg-white p-5 rounded shadow text-center hover:bg-gray-100">
+        💬
+
+        <br />
+
+        Messages
+      </a>
+
+      <a href="#notes" class="bg-white p-5 rounded shadow text-center hover:bg-gray-100">
+        📝
+
+        <br />
+
+        Notes
+      </a>
+
+      <a href="#trace" class="bg-white p-5 rounded shadow text-center hover:bg-gray-100">
+        🔍
+
+        <br />
+
+        Traceability
+      </a>
+    </div>
+
+    <!-- Field Traceability + States -->
+
+    <div id="trace" class="bg-white rounded shadow mb-6">
+      <div class="p-5 border-b">
+        <h2 class="text-xl font-bold">Tax Field Review Status</h2>
+
+        <p class="text-gray-500">AI extraction, document source and verification trail</p>
+      </div>
+
+      <table class="w-full">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-4 text-left">Tax Field</th>
+
+            <th>Value</th>
+
+            <th>Source Document</th>
+
+            <th>Page / Section</th>
+
+            <th>States</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for item in traceability %}
+            <tr class="border-b">
+              <td class="p-4 font-semibold">{{ item.field }}</td>
+
+              <td>{{ item.value }}</td>
+
+              <td>
+                <a href="#" class="text-blue-600">{{ item.document }}</a>
+              </td>
+
+              <td>{{ item.location }}</td>
+
+              <td>
+                <div class="flex flex-wrap gap-2">
+                  {% if item.ai_generated %}
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded">AI Generated</span>
+                  {% endif %}
+
+                  {% if item.editable %}
+                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Editable ✏</span>
+                  {% else %}
+                    <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded">Locked 🔒</span>
+                  {% endif %}
+
+                  {% if item.verified %}
+                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded">Verified ✓</span>
+                  {% endif %}
+
+                  {% if item.approval %}
+                    <span class="bg-red-100 text-red-700 px-3 py-1 rounded">Approval Required ⚠</span>
+                  {% endif %}
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Notes -->
+
+    <div id="notes" class="grid grid-cols-2 gap-6 mb-6">
+      <div class="bg-white rounded shadow p-6">
+        <h3 class="font-bold text-lg mb-3">Client Visible Notes</h3>
+
+        <div class="bg-gray-100 p-4 rounded">Please upload missing mortgage statement.</div>
+      </div>
+
+      <div class="bg-white rounded shadow p-6">
+        <h3 class="font-bold text-lg mb-3">Internal CPA Notes</h3>
+
+        <div class="bg-red-50 p-4 rounded">Client deduction history requires manual verification.</div>
+      </div>
+    </div>
+
+    <!-- Contextual Messages -->
+
+    <div id="messages" class="bg-white rounded shadow p-6">
+      <h3 class="text-xl font-bold mb-2">Return Conversation</h3>
+
+      <p class="text-gray-500 mb-5">
+        Related Issue:
+        <strong>Missing Mortgage Document</strong>
+      </p>
+
+      <div class="space-y-3">
+        <div class="bg-gray-100 p-4 rounded">
+          <strong>CPA</strong>
+
+          <p>Please upload Form 1098 for mortgage interest verification.</p>
+
+          <span class="text-sm text-gray-500">Today 10:30 AM</span>
+        </div>
+
+        <div class="bg-blue-100 p-4 rounded">
+          <strong>Client</strong>
+
+          <p>I uploaded the document.</p>
+
+          <span class="text-sm text-gray-500">Today 11:00 AM</span>
+        </div>
+      </div>
+
+      <div class="mt-5 flex gap-3">
+        <input class="border rounded p-3 flex-1" placeholder="Reply about this issue..." />
+
+        <button class="bg-blue-600 text-white px-5 rounded">Send</button>
+      </div>
+    </div>
+  </div>
+{% endblock %}

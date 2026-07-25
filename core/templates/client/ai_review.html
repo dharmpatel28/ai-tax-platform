@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}
+AI Tax Review
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="max-w-5xl mx-auto">
+
+
+<h2 class="text-2xl font-bold mb-6">
+AI Review Summary
+</h2>
+
+
+
+
+<div class="grid grid-cols-3 gap-6 mb-6">
+
+
+
+<div class="bg-white p-6 rounded shadow">
+
+<p class="text-gray-500">
+AI Confidence
+</p>
+
+<h1 class="text-4xl font-bold text-green-600">
+98%
+</h1>
+
+</div>
+
+
+
+
+<div class="bg-white p-6 rounded shadow">
+
+<p class="text-gray-500">
+Risk Level
+</p>
+
+<h1 class="text-3xl font-bold text-green-600">
+Low
+</h1>
+
+</div>
+
+
+
+
+<div class="bg-white p-6 rounded shadow">
+
+<p class="text-gray-500">
+Documents Checked
+</p>
+
+<h1 class="text-4xl font-bold">
+8
+</h1>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="bg-white rounded shadow p-6 mb-6">
+
+
+<h3 class="text-xl font-bold mb-4">
+AI Findings
+</h3>
+
+
+
+<div class="border-b py-3 flex justify-between">
+
+
+<span>
+W2 Income Verification
+</span>
+
+
+<span class="text-green-600">
+Verified
+</span>
+
+
+</div>
+
+
+
+
+<div class="border-b py-3 flex justify-between">
+
+
+<span>
+1099 Information
+</span>
+
+
+<span class="text-green-600">
+Verified
+</span>
+
+
+</div>
+
+
+
+
+<div class="py-3 flex justify-between">
+
+
+<span>
+Missing Bank Statement
+</span>
+
+
+<span class="text-red-600">
+Action Required
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="bg-white rounded shadow p-6">
+
+
+<h3 class="text-xl font-bold mb-4">
+AI Message
+</h3>
+
+
+<p>
+Your tax documents have been analyzed.
+Most information matches successfully.
+One document is required before your CPA can complete the filing.
+</p>
+
+
+
+<a href="{% url 'documents' %}?role=client"
+class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded">
+
+Upload Missing Document
+
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+
+{% endblock %}

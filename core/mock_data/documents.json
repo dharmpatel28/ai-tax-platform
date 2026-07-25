@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "client": "John Doe",
+    "name": "W2.pdf",
+    "extraction_status": "Extracted",
+    "status": "Reviewed",
+    "uploaded": "July 20, 2026"
+  },
+  {
+    "id": 2,
+    "client": "Sarah Smith",
+    "name": "1099.pdf",
+    "extraction_status": "Processing",
+    "status": "Pending",
+    "uploaded": "July 22, 2026"
+  },
+  {
+    "id": 3,
+    "client": "Mike Johnson",
+    "name": "Bank Statement.pdf",
+    "extraction_status": "Missing",
+    "status": "Action Required",
+    "uploaded": "-"
+  }
+]

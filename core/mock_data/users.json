@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Sarah Johnson",
+        "role": "cpa"
+    },
+    {
+        "id": 2,
+        "name": "John Doe",
+        "role": "client"
+    }
+]

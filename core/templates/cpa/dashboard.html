@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+  CPA Dashboard
+{% endblock %}
+
+{% block content %}
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6">Good Morning Sarah 👋</h2>
+
+    <!-- Summary -->
+
+    <div class="grid grid-cols-4 gap-6 mb-8">
+      <div class="bg-white p-6 rounded shadow">
+        <p class="text-gray-500">Pending Returns</p>
+
+        <h1 class="text-4xl font-bold">{{ summary.pending_returns }}</h1>
+      </div>
+
+      <div class="bg-white p-6 rounded shadow">
+        <p class="text-gray-500">Missing Documents</p>
+
+        <h1 class="text-4xl font-bold text-red-600">{{ summary.missing_documents }}</h1>
+      </div>
+
+      <div class="bg-white p-6 rounded shadow">
+        <p class="text-gray-500">AI Reviews</p>
+
+        <h1 class="text-4xl font-bold text-purple-600">{{ summary.ai_reviews }}</h1>
+      </div>
+
+      <div class="bg-white p-6 rounded shadow">
+        <p class="text-gray-500">Client Actions</p>
+
+        <h1 class="text-4xl font-bold text-blue-600">{{ summary.client_actions }}</h1>
+      </div>
+    </div>
+
+    <!-- Priority Section -->
+
+    <div class="bg-white rounded shadow mb-8">
+      <div class="p-5 border-b">
+  <h2 class="text-xl font-bold">What should you work on right now?</h2>
+  <p class="text-sm text-gray-500 mt-1">
+    Highest-priority items surface first so staff can move from summary into action quickly.
+  </p>
+</div>
+
+      <table class="w-full">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-4 text-left">Client</th>
+
+            <th>Issue</th>
+
+            <th>Owner</th>
+
+            <th>Priority</th>
+
+            <th>Status</th>
+
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for task in priority_tasks %}
+            <tr class="border-b">
+              <td class="p-4">{{ task.client }}</td>
+
+              <td>{{ task.issue }}</td>
+
+              <td>
+                {% if task.owner == 'CPA' %}
+                  <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded">CPA</span>
+                {% else %}
+                  <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded">Client</span>
+                {% endif %}
+              </td>
+
+              <td>
+                {% if task.priority == 'High' %}
+                  <span class="bg-red-100 text-red-700 px-3 py-1 rounded">High</span>
+                {% elif task.priority == 'Medium' %}
+                  <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Medium</span>
+                {% else %}
+                  <span class="bg-green-100 text-green-700 px-3 py-1 rounded">Low</span>
+                {% endif %}
+              </td>
+
+              <td>{{ task.status }}</td>
+
+              <td>
+  {% if task.owner == 'CPA' %}
+    <a href="{% url 'return_detail' task.id %}" class="bg-gray-900 text-white px-4 py-2 rounded">
+      Review now
+    </a>
+  {% else %}
+    <a href="{% url 'messages' %}?return_id={{ task.id }}" class="bg-blue-600 text-white px-4 py-2 rounded">
+      Follow up
+    </a>
+  {% endif %}
+</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Recent Activity -->
+
+    <div class="grid grid-cols-2 gap-6">
+      <div class="bg-white rounded shadow p-6">
+        <h3 class="font-bold text-xl mb-4">Recent Activity</h3>
+
+        <p class="border-b py-3">John uploaded W2.pdf</p>
+
+        <p class="border-b py-3">AI detected deduction issue</p>
+
+        <p class="py-3">Client replied to document request</p>
+      </div>
+
+      <div class="bg-white rounded shadow p-6">
+        <h3 class="font-bold text-xl mb-4">AI Alerts</h3>
+
+        <div class="bg-red-100 p-4 rounded mb-3">⚠ Missing Form 1098</div>
+
+        <div class="bg-yellow-100 p-4 rounded">⚠ Deduction requires approval</div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

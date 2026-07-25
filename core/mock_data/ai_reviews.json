@@ -1,0 +1,37 @@
+[
+    {
+        "id":1,
+        "return_id":1,
+        "recommendation":"Verify W2 Income",
+        "confidence":98,
+        "reason":"Income extracted from W2 matches the tax return information.",
+        "document":"W2.pdf",
+        "page":1,
+        "risk":"Low",
+        "status":"Reviewed"
+    },
+
+    {
+        "id":2,
+        "return_id":1,
+        "recommendation":"Review Federal Tax Withholding",
+        "confidence":86,
+        "reason":"Federal tax value requires manual verification because extracted information does not match expected values.",
+        "document":"W2.pdf",
+        "page":1,
+        "risk":"Medium",
+        "status":"Pending Review"
+    },
+
+    {
+        "id":3,
+        "return_id":1,
+        "recommendation":"Verify Interest Income",
+        "confidence":94,
+        "reason":"Interest income detected from 1099 document and successfully matched with reported values.",
+        "document":"1099.pdf",
+        "page":2,
+        "risk":"Low",
+        "status":"Reviewed"
+    }
+]

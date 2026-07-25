@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block page_title %}Messages{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto space-y-6">
+  <nav class="text-sm text-gray-500">
+    <a href="{% url 'client_dashboard' %}" class="text-blue-600">Dashboard</a>
+    <span class="mx-2">/</span>
+    <span>Messages</span>
+  </nav>
+
+  <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+    <p class="text-sm font-medium text-blue-800">About this request</p>
+    <p class="text-sm text-blue-700">Your CPA requested a mortgage statement for Return #1001.</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow p-6">
+    <h1 class="text-2xl font-bold mb-4">Chat with your CPA</h1>
+
+    <div class="space-y-4">
+      <div class="bg-blue-100 p-4 rounded-xl">
+        <p class="font-semibold text-sm">CPA</p>
+        <p class="text-sm mt-1">Please upload your mortgage statement for Return #1001.</p>
+      </div>
+
+      <div class="bg-gray-100 p-4 rounded-xl">
+        <p class="font-semibold text-sm">You</p>
+        <p class="text-sm mt-1">I uploaded a document, but I am not sure whether it is correct.</p>
+      </div>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="{% url 'documents' %}?role=client" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Upload document</a>
+      <a href="{% url 'status' %}?role=client" class="bg-gray-900 text-white px-4 py-2 rounded-lg">View return status</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% comment %} {% extends "base.html" %}
+
+
+{% block page_title %}
+Messages
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="max-w-5xl mx-auto">
+
+
+<h2 class="text-2xl font-bold mb-6">
+Chat With Your CPA
+</h2>
+
+
+
+
+<div class="bg-white rounded shadow p-6">
+
+
+<div class="h-96 space-y-4">
+
+
+<div class="bg-blue-100 p-4 rounded">
+
+CPA:
+
+<br>
+
+Please upload your mortgage statement.
+
+</div>
+
+
+
+<div class="bg-gray-100 p-4 rounded">
+
+You:
+
+<br>
+
+I uploaded the document.
+
+</div>
+
+
+
+<div class="bg-blue-100 p-4 rounded">
+
+CPA:
+
+<br>
+
+Received. We will continue reviewing your return.
+
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="mt-5 flex gap-3">
+
+
+<input
+type="text"
+placeholder="Write a message..."
+class="border p-3 rounded flex-1">
+
+
+
+<button
+class="bg-blue-600 text-white px-5 rounded">
+
+Send
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+{% endblock %} {% endcomment %}

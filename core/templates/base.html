@@ -1,0 +1,163 @@
+{% comment %} {% block content %} {% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI Tax Platform{% endblock %}</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<!-- templates/base.html -->
+
+
+<body class="bg-gray-100">
+ <div>
+        DEBUG ROLE: {{ request.session.user_role }}
+    </div>
+<div class="flex h-screen">
+
+    {% comment %} {% if request.session.role %} {% endcomment %}
+    {% if request.session.role and request.resolver_match.url_name != "landing" %}
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 text-white">
+
+        <div class="p-6 border-b border-slate-700">
+
+            <h1 class="text-2xl font-bold">
+                AI Tax
+            </h1>
+
+            <p class="text-sm text-gray-400 mt-1">
+                Tax Management Platform
+            </p>
+
+        </div>
+
+        <nav class="mt-5">
+
+            {% if request.session.role == "client" %}
+
+            
+
+            <a href="{% url 'client_dashboard' %}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-house mr-2"></i>
+                Dashboard
+            </a>
+
+            <a href="{% url 'returns' %}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-file-lines mr-2"></i>
+                My Return
+            </a>
+
+            <a href="{% url 'documents' %}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-folder mr-2"></i>
+                Documents
+            </a>
+
+            <a href="{% url 'messages' %}?role={{ role }}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-comments mr-2"></i>
+                Messages
+                
+            </a>
+
+            <a href="{% url 'status' %}?role={{ role }}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-chart-simple mr-2"></i>
+                Status
+            </a>
+
+            {% else %}
+
+            <a href="{% url 'cpa_dashboard' %}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-house mr-2"></i>
+                Dashboard
+            </a>
+
+            <a href="{% url 'returns' %}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-file-lines mr-2"></i>
+                Returns
+            </a>
+
+            <a href="{% url 'documents' %}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-folder mr-2"></i>
+                Documents
+            </a>
+
+            <a href="{% url 'messages' %}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-comments mr-2"></i>
+                Messages
+            </a>
+
+            <a href="{% url 'ai_review' %}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-robot mr-2"></i>
+                AI Review
+            </a>
+
+            <a href="{% url 'status' %}"
+               class="block px-6 py-3 hover:bg-slate-700">
+                <i class="fa-solid fa-chart-simple mr-2"></i>
+                Status
+            </a>
+
+            {% endif %}
+
+        </nav>
+
+    </aside>
+
+    {% endif %}
+
+    <div class="flex-1 flex flex-col">
+
+        {% if request.session.role %}
+
+        <header class="bg-white shadow px-8 py-4 flex justify-between items-center">
+
+            <h2 class="text-xl font-semibold">
+                {% block page_title %}
+                Dashboard
+                {% endblock %}
+            </h2>
+
+            <div>
+
+                <span class="font-medium capitalize">
+
+                    {{ request.session.role }}
+
+                </span>
+
+            </div>
+
+        </header>
+
+        {% endif %}
+
+        <main class="p-8 overflow-y-auto">
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+</html>

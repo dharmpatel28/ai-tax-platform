@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+  Return Review
+{% endblock %}
+
+{% block content %}
+  <div class="max-w-7xl mx-auto space-y-6">
+    <nav class="text-sm text-gray-500">
+      <a href="{% url 'cpa_dashboard' %}" class="text-blue-600">Dashboard</a>
+      <span class="mx-2">/</span>
+      <a href="{% url 'returns' %}" class="text-blue-600">Returns</a>
+      <span class="mx-2">/</span>
+      <span>Return {{ return.id }}</span>
+    </nav>
+
+    <div class="flex items-start justify-between">
+      <div>
+        <h1 class="text-3xl font-bold">Return {{ return.id }}</h1>
+        <p class="text-gray-600">{{ return.client }} · Tax Year {{ return.taxyear }}</p>
+      </div>
+      <div class="text-right">
+        <p class="text-sm text-gray-500">Next action owner</p>
+        <p class="font-semibold text-yellow-700">CPA review required</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 bg-white rounded-xl shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-bold">Field Traceability Review</h2>
+          <span class="text-sm px-3 py-1 rounded-full bg-blue-100 text-blue-700">AI-assisted</span>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-5 text-sm">
+          <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-700">AI-generated</span>
+          <span class="px-3 py-1 rounded-full bg-green-100 text-green-700">Verified</span>
+          <span class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-700">Needs approval</span>
+          <span class="px-3 py-1 rounded-full bg-gray-200 text-gray-700">Locked</span>
+          <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700">Editable</span>
+        </div>
+
+        <div class="space-y-4">
+          <div class="border rounded-xl p-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-gray-500">Tax return field</p>
+                <h3 class="font-semibold">Wages, salaries, tips</h3>
+              </div>
+              <div class="text-right">
+                <p class="text-sm text-gray-500">Return value</p>
+                <p class="font-bold text-lg">$82,450</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-sm">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-gray-500 mb-1">Extracted from</p>
+                <p class="font-medium">W2.pdf</p>
+                <p class="text-gray-600">Page 1 · Box 1</p>
+                <a href="{% url 'document_detail' 1 %}" class="text-blue-600 mt-2 inline-block">Open source document</a>
+              </div>
+
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-gray-500 mb-1">Transformation</p>
+                <p class="font-medium">No adjustment applied</p>
+                <p class="text-gray-600">Copied directly from source field</p>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm">AI-generated</span>
+                <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm">Verified</span>
+                <span class="px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-sm">Locked after verification</span>
+              </div>
+
+              <div class="flex flex-wrap gap-2">
+                <button class="px-4 py-2 bg-gray-300 text-gray-600 rounded-lg cursor-not-allowed" disabled>Accepted</button>
+                <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg">View audit trail</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="border rounded-xl p-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-gray-500">Tax return field</p>
+                <h3 class="font-semibold">Federal tax withheld</h3>
+              </div>
+              <div class="text-right">
+                <p class="text-sm text-gray-500">Return value</p>
+                <p class="font-bold text-lg">$7,940</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-sm">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-gray-500 mb-1">Extracted from</p>
+                <p class="font-medium">W2.pdf</p>
+                <p class="text-gray-600">Page 1 · Box 2</p>
+                <a href="{% url 'document_detail' 1 %}" class="text-blue-600 mt-2 inline-block">Open source document</a>
+              </div>
+
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-gray-500 mb-1">Transformation</p>
+                <p class="font-medium">Manual verification required</p>
+                <p class="text-gray-600">Extracted value differs from expected range</p>
+              </div>
+            </div>
+
+            <div class="mt-4">
+  <div class="flex flex-wrap gap-2 mb-3">
+    <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm">AI-generated</span>
+    <span class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-sm">Needs approval</span>
+    <span class="px-3 py-1 rounded-full bg-red-100 text-red-700 text-sm">Low confidence</span>
+    <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm">Editable by CPA</span>
+  </div>
+
+  <div class="flex flex-wrap gap-2">
+    <button class="px-4 py-2 bg-green-600 text-white rounded-lg">Approve value</button>
+    <button class="px-4 py-2 bg-yellow-500 text-white rounded-lg">Edit / override</button>
+    <a href="{% url 'messages' %}?return_id={{ return.id }}&document_id=1&issue=withholding_mismatch" class="px-4 py-2 bg-blue-600 text-white rounded-lg">
+      Request clarification
+    </a>
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="bg-white rounded-xl shadow p-6">
+          <h2 class="text-lg font-bold mb-3">Workflow context</h2>
+          <p class="text-sm text-gray-600 mb-2">You are reviewing Return {{ return.id }} after an AI warning on withholding mismatch.</p>
+          <ul class="text-sm space-y-2">
+            <li>
+              <a class="text-blue-600" href="{% url 'document_detail' 1 %}">Open related document</a>
+            </li>
+            <li>
+              <a class="text-blue-600" href="{% url 'ai_review_detail' return.id %}">Open AI review details</a>
+            </li>
+            <li>
+              <a class="text-blue-600" href="{% url 'messages' %}?return_id={{ return.id }}&document_id=1">Open related messages</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6">
+          <h2 class="text-lg font-bold mb-3">Review summary</h2>
+          <p class="text-sm text-gray-600">{{ reviews|length }} AI checks completed</p>
+          <p class="text-sm text-gray-600">
+            Average confidence: <span class="font-semibold">95%</span>
+          </p>
+          <div class="mt-4 flex gap-3">
+            <button class="bg-green-600 text-white px-4 py-2 rounded-lg">Approve return</button>
+            <button class="bg-gray-800 text-white px-4 py-2 rounded-lg">Save review</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+{% endblock %}

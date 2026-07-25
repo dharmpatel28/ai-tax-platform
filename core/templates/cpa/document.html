@@ -1,0 +1,523 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+CPA Documents
+{% endblock %}
+
+{% block content %}
+
+<div class="max-w-7xl mx-auto">
+
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold">
+            Client Documents
+        </h2>
+
+        <button class="bg-blue-600 text-white px-5 py-2 rounded">
+            Request Document
+        </button>
+    </div>
+
+    <!-- Search / Filter -->
+    <div class="bg-white p-4 rounded shadow mb-6 flex gap-4">
+        <input
+            type="text"
+            placeholder="Search client or document..."
+            class="border rounded p-3 flex-1">
+
+        <select class="border rounded p-3">
+            <option>All Status</option>
+            <option>Pending Review</option>
+            <option>Completed</option>
+            <option>Missing</option>
+        </select>
+    </div>
+
+    <!-- Documents Table -->
+    <div class="bg-white rounded shadow overflow-hidden">
+        <table class="w-full">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="p-4 text-left">Client</th>
+                    <th class="text-left">Document</th>
+                    <th>AI Extraction</th>
+                    <th>Review Status</th>
+                    <th>Uploaded</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for document in documents %}
+                <tr class="border-b">
+                    <td class="p-4">
+                        {{ document.client }}
+                    </td>
+
+                    <td>
+                        {{ document.name }}
+                    </td>
+
+                    <td>
+                        {% if document.extraction_status == "Extracted" %}
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded">
+                            Extracted
+                        </span>
+                        {% elif document.extraction_status == "Processing" %}
+                        <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded">
+                            Processing
+                        </span>
+                        {% else %}
+                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded">
+                            Missing
+                        </span>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if document.status == "Reviewed" %}
+                        <span class="text-green-600 font-semibold">
+                            Reviewed
+                        </span>
+                        {% elif document.status == "Pending" %}
+                        <span class="text-yellow-600 font-semibold">
+                            Pending
+                        </span>
+                        {% else %}
+                        <span class="text-red-600 font-semibold">
+                            Action Required
+                        </span>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {{ document.uploaded }}
+                    </td>
+
+                    <td>
+                        <a href="{% url 'document_detail' document.id %}" class="bg-blue-600 text-white px-3 py-2 rounded inline-block">
+                            View
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="p-6 text-center text-gray-500">
+                        No documents found.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- AI Document Summary -->
+    <div class="grid grid-cols-3 gap-6 mt-6">
+        <div class="bg-white p-6 rounded shadow">
+            <p class="text-gray-500">
+                Total Documents
+            </p>
+            <h1 class="text-3xl font-bold">
+                {{ documents|length }}
+            </h1>
+        </div>
+
+        <div class="bg-white p-6 rounded shadow">
+            <p class="text-gray-500">
+                AI Processed
+            </p>
+            <h1 class="text-3xl font-bold text-green-600">
+                112
+            </h1>
+        </div>
+
+        <div class="bg-white p-6 rounded shadow">
+            <p class="text-gray-500">
+                Needs Review
+            </p>
+            <h1 class="text-3xl font-bold text-red-600">
+                12
+            </h1>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% comment %} {% extends "base.html" %}
+
+{% block page_title %}
+CPA Documents vvvvv
+{% endblock %}
+
+
+{% block content %}
+
+<div class="max-w-7xl mx-auto">
+
+
+    <div class="flex justify-between items-center mb-6">
+
+        <h2 class="text-2xl font-bold">
+            Client Documents
+        </h2>
+
+
+        <button class="bg-blue-600 text-white px-5 py-2 rounded">
+            Request Document
+        </button>
+
+    </div>
+
+
+
+    <!-- Search / Filter -->
+
+    <div class="bg-white p-4 rounded shadow mb-6 flex gap-4">
+
+
+        <input 
+        type="text"
+        placeholder="Search client or document..."
+        class="border rounded p-3 flex-1">
+
+
+        <select class="border rounded p-3">
+
+            <option>
+                All Status
+            </option>
+
+            <option>
+                Pending Review
+            </option>
+
+            <option>
+                Completed
+            </option>
+
+            <option>
+                Missing
+            </option>
+
+        </select>
+
+
+    </div>
+
+
+
+
+    <!-- Documents Table -->
+
+
+    <div class="bg-white rounded shadow overflow-hidden">
+
+
+        <table class="w-full">
+
+
+            <thead class="bg-gray-200">
+
+
+                <tr>
+
+                    <th class="p-4 text-left">
+                        Client
+                    </th>
+
+
+                    <th class="text-left">
+                        Document
+                    </th>
+
+
+                    <th>
+                        AI Extraction
+                    </th>
+
+
+                    <th>
+                        Review Status
+                    </th>
+
+
+                    <th>
+                        Uploaded
+                    </th>
+
+
+                    <th>
+                        Action
+                    </th>
+
+
+                </tr>
+
+
+            </thead>
+
+
+
+            <tbody>
+
+
+
+                <tr class="border-b">
+
+
+                    <td class="p-4">
+                        John Doe
+                    </td>
+
+
+                    <td>
+                        W2.pdf
+                    </td>
+
+
+                    <td>
+
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded">
+
+                            Extracted
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="text-green-600 font-semibold">
+
+                            Reviewed
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+                        July 20, 2026
+                    </td>
+
+
+                    <td>
+
+
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded">
+
+                            <a href="{% url 'document_detail' document.id %}" class="btn">View</a>
+
+                        </button>
+
+
+                    </td>
+
+
+                </tr>
+
+
+
+
+
+                <tr class="border-b">
+
+
+                    <td class="p-4">
+                        Sarah Smith
+                    </td>
+
+
+                    <td>
+                        1099.pdf
+                    </td>
+
+
+                    <td>
+
+
+                        <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded">
+
+                            Processing
+
+                        </span>
+
+
+                    </td>
+
+
+                    <td>
+
+
+                        <span class="text-yellow-600 font-semibold">
+
+                            Pending
+
+                        </span>
+
+
+                    </td>
+
+
+                    <td>
+                        July 22, 2026
+                    </td>
+
+
+                    <td>
+
+
+                        <button class="bg-blue-600 text-white px-3 py-1 rounded">
+
+                            Review
+
+                        </button>
+
+
+                    </td>
+
+
+                </tr>
+
+
+
+
+
+
+                <tr>
+
+
+                    <td class="p-4">
+                        Mike Johnson
+                    </td>
+
+
+                    <td>
+                        Bank Statement.pdf
+                    </td>
+
+
+                    <td>
+
+
+                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded">
+
+                            Missing
+
+                        </span>
+
+
+                    </td>
+
+
+                    <td>
+
+
+                        <span class="text-red-600 font-semibold">
+
+                            Action Required
+
+                        </span>
+
+
+                    </td>
+
+
+                    <td>
+                        -
+                    </td>
+
+
+                    <td>
+
+
+                        <button class="bg-gray-700 text-white px-3 py-1 rounded">
+
+                            Request
+
+                        </button>
+
+
+                    </td>
+
+
+                </tr>
+
+
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+
+
+
+    <!-- AI Document Summary -->
+
+
+    <div class="grid grid-cols-3 gap-6 mt-6">
+
+
+        <div class="bg-white p-6 rounded shadow">
+
+            <p class="text-gray-500">
+                Total Documents
+            </p>
+
+            <h1 class="text-3xl font-bold">
+                124
+            </h1>
+
+        </div>
+
+
+
+        <div class="bg-white p-6 rounded shadow">
+
+            <p class="text-gray-500">
+                AI Processed
+            </p>
+
+            <h1 class="text-3xl font-bold text-green-600">
+                112
+            </h1>
+
+        </div>
+
+
+
+        <div class="bg-white p-6 rounded shadow">
+
+            <p class="text-gray-500">
+                Needs Review
+            </p>
+
+            <h1 class="text-3xl font-bold text-red-600">
+                12
+            </h1>
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+{% endblock %} {% endcomment %}

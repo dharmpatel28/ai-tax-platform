@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}
+Field Traceability
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="max-w-7xl mx-auto">
+
+
+<h2 class="text-2xl font-bold mb-6">
+Tax Field Traceability
+</h2>
+
+
+
+<div class="bg-white rounded shadow">
+
+
+<table class="w-full">
+
+
+<thead class="bg-gray-200">
+
+<tr>
+
+<th class="p-4 text-left">
+Tax Field
+</th>
+
+<th>
+Extracted Value
+</th>
+
+<th>
+Source Document
+</th>
+
+<th>
+Location
+</th>
+
+<th>
+AI Validation
+</th>
+
+</tr>
+
+</thead>
+
+
+
+<tbody>
+
+
+<tr class="border-b">
+
+<td class="p-4">
+Wages
+</td>
+
+
+<td>
+$85,000
+</td>
+
+
+<td>
+W2.pdf
+</td>
+
+
+<td>
+Page 1<br>
+Box 1
+</td>
+
+
+<td class="text-green-600">
+
+Matched ✓
+
+</td>
+
+
+</tr>
+
+
+
+
+<tr class="border-b">
+
+
+<td class="p-4">
+Federal Tax Withheld
+</td>
+
+
+<td>
+$12,500
+</td>
+
+
+<td>
+W2.pdf
+</td>
+
+
+<td>
+Page 1<br>
+Box 2
+</td>
+
+
+<td class="text-green-600">
+
+Verified ✓
+
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<td class="p-4">
+Mortgage Interest
+</td>
+
+
+<td>
+$8,200
+</td>
+
+
+<td>
+1098.pdf
+</td>
+
+
+<td>
+Page 2
+</td>
+
+
+<td class="text-yellow-600">
+
+Review Needed
+
+</td>
+
+
+</tr>
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+{% endblock %}
