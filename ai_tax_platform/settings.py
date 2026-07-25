@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-a#coyefqzg(^(*7h_38@l-!ywt+sdn(*rqq(rgfd_hio!1km9e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["dharmtaxplatform.pythonanywhere.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["dharm3059.pythonanywhere.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
