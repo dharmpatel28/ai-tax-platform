@@ -16,7 +16,6 @@ def select_role(request, role):
     if role:
         request.session["user_role"] = role
         request.session.modified = True
-    
 
     if role == "client":
         return redirect("client_dashboard")
@@ -30,7 +29,7 @@ def client_dashboard(request):
 
     return render(request, "client/dashboard.html", {
         "role": "client"
-    })  
+    })
 
 
 # def cpa_dashboard(request):
@@ -74,7 +73,6 @@ def cpa_dashboard(request):
 
     ]
 
-
     summary = {
 
         "pending_returns": 5,
@@ -87,7 +85,6 @@ def cpa_dashboard(request):
 
     }
 
-
     return render(
         request,
         "cpa/dashboard.html",
@@ -96,6 +93,7 @@ def cpa_dashboard(request):
             "summary": summary
         }
     )
+
 
 def returns_list(request):
     role = request.session.get("role")
@@ -126,6 +124,7 @@ def returns_list(request):
         {"returns": returns},
     )
 
+
 def return_detail(request, return_id):
 
     with open("core/mock_data/returns.json") as f:
@@ -154,6 +153,7 @@ def return_detail(request, return_id):
         "cpa/return_detail.html",
         context,
     )
+
 
 def document_detail(request, document_id):
 
@@ -197,6 +197,7 @@ def returns(request):
         {"returns": returns}
     )
 
+
 def documents(request):
     role = request.session.get("role")
 
@@ -220,7 +221,7 @@ def documents(request):
 def messages(request):
 
     role = request.session.get("role")
-        
+
     if role:
         request.session["user_role"] = role
         request.session.modified = True
@@ -231,7 +232,6 @@ def messages(request):
     else:
         template = "client/messages.html"
 
-
     return render(
         request,
         template,
@@ -241,11 +241,10 @@ def messages(request):
     )
 
 
-
 def ai_review(request):
 
     role = request.session.get("role")
-            
+
     if role:
         request.session["user_role"] = role
         request.session.modified = True
@@ -255,10 +254,10 @@ def ai_review(request):
     else:
         template = "client/ai_review.html"
 
-
     return render(request, template, {
         "role": role
     })
+
 
 def ai_review_detail(request, id):
 
@@ -269,10 +268,12 @@ def ai_review_detail(request, id):
             "return_id": id
         }
     )
+
+
 def status(request):
 
     role = request.session.get("role")
-            
+
     if role:
         request.session["user_role"] = role
         request.session.modified = True
@@ -281,7 +282,6 @@ def status(request):
         template = "cpa/status.html"
     else:
         template = "client/status.html"
-
 
     return render(request, template, {
         "role": role
@@ -299,8 +299,7 @@ def client_ai_chat(request):
     )
 
 
-def return_workplace(request,id):
-
+def return_workplace(request, id):
 
     return_data = {
 
@@ -312,7 +311,6 @@ def return_workplace(request,id):
         "next_action": "Upload Mortgage Form 1098"
 
     }
-
 
     traceability = [
 
@@ -358,8 +356,6 @@ def return_workplace(request,id):
         }
 
     ]
-
-
 
     return render(
         request,

@@ -1,108 +1,53 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 
 {% block page_title %}
-AI Tax Assistant
+  AI Tax Assistant
 {% endblock %}
 
-
-
 {% block content %}
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6">AI Tax Assistant</h2>
 
+    <div class="bg-white rounded shadow p-6">
+      <div class="h-96 overflow-y-auto space-y-4">
+        <div class="bg-gray-100 p-4 rounded">
+          <b>You:</b>
 
-<div class="max-w-4xl mx-auto">
+          <br />
 
+          What documents do I need for my tax return?
+        </div>
 
-<h2 class="text-2xl font-bold mb-6">
-AI Tax Assistant
-</h2>
+        <div class="bg-purple-100 p-4 rounded">
+          <b>AI Assistant:</b>
 
+          <br />
 
+          You should upload your W2, 1099 forms, bank statements, and any deduction documents.
+        </div>
 
-<div class="bg-white rounded shadow p-6">
+        <div class="bg-gray-100 p-4 rounded">
+          <b>You:</b>
 
+          <br />
 
-<div class="h-96 overflow-y-auto space-y-4">
+          Can I claim home office expenses?
+        </div>
 
+        <div class="bg-purple-100 p-4 rounded">
+          <b>AI Assistant:</b>
 
+          <br />
 
-<div class="bg-gray-100 p-4 rounded">
+          You may qualify if the space is used regularly and exclusively for business purposes.
+        </div>
+      </div>
 
-<b>You:</b>
+      <div class="mt-5 flex gap-3">
+        <input type="text" placeholder="Ask your tax question..." class="border rounded p-3 flex-1" />
 
-<br>
-
-What documents do I need for my tax return?
-
-</div>
-
-
-
-<div class="bg-purple-100 p-4 rounded">
-
-<b>AI Assistant:</b>
-
-<br>
-
-You should upload your W2, 1099 forms,
-bank statements, and any deduction documents.
-
-</div>
-
-
-
-
-<div class="bg-gray-100 p-4 rounded">
-
-<b>You:</b>
-
-<br>
-
-Can I claim home office expenses?
-
-</div>
-
-
-
-<div class="bg-purple-100 p-4 rounded">
-
-<b>AI Assistant:</b>
-
-<br>
-
-You may qualify if the space is used regularly
-and exclusively for business purposes.
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-<div class="mt-5 flex gap-3">
-
-
-<input
-type="text"
-placeholder="Ask your tax question..."
-class="border rounded p-3 flex-1">
-
-
-
-<button
-class="bg-purple-600 text-white px-6 rounded">
-
-Ask
-
-</button>
-</div>
-</div>
-</div>
-
-
-
+        <button class="bg-purple-600 text-white px-6 rounded">Ask</button>
+      </div>
+    </div>
+  </div>
 {% endblock %}

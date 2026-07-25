@@ -1,233 +1,95 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block page_title %}
-AI Review Dashboard
+  AI Review Dashboard
 {% endblock %}
 
-
 {% block content %}
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6">AI Review Dashboard</h2>
 
-<div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-3 gap-6 mb-6">
+      <div class="bg-white p-6 rounded shadow">
+        <p class="text-gray-500">Total Reviews</p>
 
+        <h1 class="text-4xl font-bold">25</h1>
+      </div>
 
-<h2 class="text-2xl font-bold mb-6">
-    AI Review Dashboard
-</h2>
+      <div class="bg-white p-6 rounded shadow">
+        <p class="text-gray-500">High Risk Items</p>
 
+        <h1 class="text-4xl font-bold text-red-600">2</h1>
+      </div>
 
-<div class="grid grid-cols-3 gap-6 mb-6">
+      <div class="bg-white p-6 rounded shadow">
+        <p class="text-gray-500">Completed Reviews</p>
 
+        <h1 class="text-4xl font-bold text-green-600">18</h1>
+      </div>
+    </div>
 
-<div class="bg-white p-6 rounded shadow">
+    <div class="bg-white rounded shadow">
+      <table class="w-full">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="p-4 text-left">Return ID</th>
 
-<p class="text-gray-500">
-Total Reviews
-</p>
+            <th>Issue</th>
 
-<h1 class="text-4xl font-bold">
-25
-</h1>
+            <th>Confidence</th>
 
-</div>
+            <th>Risk</th>
 
+            <th>Status</th>
+          </tr>
+        </thead>
 
-<div class="bg-white p-6 rounded shadow">
+        <tbody>
+          <tr class="border-b">
+            <td class="p-4">#1001</td>
 
-<p class="text-gray-500">
-High Risk Items
-</p>
+            <td>W2 Income Verification</td>
 
-<h1 class="text-4xl font-bold text-red-600">
-2
-</h1>
+            <td>98%</td>
 
-</div>
+            <td class="text-green-600">Low</td>
 
+            <td>Reviewed</td>
+          </tr>
 
-<div class="bg-white p-6 rounded shadow">
+          <tr class="border-b">
+            <td class="p-4">#1002</td>
 
-<p class="text-gray-500">
-Completed Reviews
-</p>
+            <td>Missing 1099 Document</td>
 
-<h1 class="text-4xl font-bold text-green-600">
-18
-</h1>
+            <td>82%</td>
 
-</div>
+            <td class="text-yellow-600">Medium</td>
 
+            <td>Needs Review</td>
+          </tr>
 
-</div>
+          <tr>
+            <td class="p-4">#1003</td>
 
+            <td>Deduction Analysis</td>
 
+            <td>65%</td>
 
+            <td class="text-red-600">High</td>
 
-<div class="bg-white rounded shadow">
+            <td>Pending</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
+    <div class="bg-white rounded shadow mt-6 p-6">
+      <h3 class="text-xl font-bold mb-4">AI Recommendation</h3>
 
-<table class="w-full">
+      <p>AI detected possible inconsistencies in two client returns. Please review supporting documents before submission.</p>
 
-<thead class="bg-gray-200">
-
-<tr>
-
-<th class="p-4 text-left">
-Return ID
-</th>
-
-<th>
-Issue
-</th>
-
-<th>
-Confidence
-</th>
-
-<th>
-Risk
-</th>
-
-<th>
-Status
-</th>
-
-</tr>
-
-</thead>
-
-
-<tbody>
-
-
-<tr class="border-b">
-
-<td class="p-4">
-#1001
-</td>
-
-
-<td>
-W2 Income Verification
-</td>
-
-
-<td>
-98%
-</td>
-
-
-<td class="text-green-600">
-Low
-</td>
-
-
-<td>
-Reviewed
-</td>
-
-
-</tr>
-
-
-
-<tr class="border-b">
-
-
-<td class="p-4">
-#1002
-</td>
-
-
-<td>
-Missing 1099 Document
-</td>
-
-
-<td>
-82%
-</td>
-
-
-<td class="text-yellow-600">
-Medium
-</td>
-
-
-<td>
-Needs Review
-</td>
-
-
-</tr>
-
-
-
-<tr>
-
-
-<td class="p-4">
-#1003
-</td>
-
-
-<td>
-Deduction Analysis
-</td>
-
-
-<td>
-65%
-</td>
-
-
-<td class="text-red-600">
-High
-</td>
-
-
-<td>
-Pending
-</td>
-
-
-</tr>
-
-
-
-</tbody>
-
-</table>
-
-
-</div>
-
-
-
-
-
-<div class="bg-white rounded shadow mt-6 p-6">
-
-
-<h3 class="text-xl font-bold mb-4">
-AI Recommendation
-</h3>
-
-
-<p>
-AI detected possible inconsistencies in two client returns.
-Please review supporting documents before submission.
-</p>
-
-
-
-
-<a href="{% url 'ai_review_detail' 1 %}" class="bg-blue-600 text-white px-3 py-1 rounded"> View </a>
-
-
-</div>
-
-
-</div>
-
-
+      <a href="{% url 'ai_review_detail' 1 %}" class="bg-blue-600 text-white px-3 py-1 rounded">View</a>
+    </div>
+  </div>
 {% endblock %}

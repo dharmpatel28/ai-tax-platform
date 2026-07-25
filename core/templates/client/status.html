@@ -1,164 +1,61 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 
 {% block page_title %}
-My Tax Status
+  My Tax Status
 {% endblock %}
 
-
-
 {% block content %}
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6">Your Tax Return Progress</h2>
 
+    <div class="bg-white rounded shadow p-6">
+      <div class="space-y-8">
+        <div class="flex items-center">
+          <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center">✓</div>
 
-<div class="max-w-5xl mx-auto">
+          <div class="ml-4">
+            <h3 class="font-bold">Documents Submitted</h3>
 
+            <p class="text-gray-500">Your documents have been received</p>
+          </div>
+        </div>
 
-<h2 class="text-2xl font-bold mb-6">
-Your Tax Return Progress
-</h2>
+        <div class="flex items-center">
+          <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center">✓</div>
 
+          <div class="ml-4">
+            <h3 class="font-bold">AI Review Complete</h3>
 
+            <p class="text-gray-500">Your information has been checked</p>
+          </div>
+        </div>
 
+        <div class="flex items-center">
+          <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center">3</div>
 
-<div class="bg-white rounded shadow p-6">
+          <div class="ml-4">
+            <h3 class="font-bold">CPA Reviewing Return</h3>
 
+            <p class="text-gray-500">Your CPA is verifying your tax information</p>
+          </div>
+        </div>
 
-<div class="space-y-8">
+        <div class="flex items-center">
+          <div class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center">4</div>
 
+          <div class="ml-4">
+            <h3 class="font-bold">Filed With IRS</h3>
 
+            <p class="text-gray-500">Waiting for final submission</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="flex items-center">
+    <div class="bg-white rounded shadow p-6 mt-6">
+      <h3 class="text-xl font-bold mb-3">Current Status</h3>
 
-
-<div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center">
-✓
-</div>
-
-
-<div class="ml-4">
-
-<h3 class="font-bold">
-Documents Submitted
-</h3>
-
-<p class="text-gray-500">
-Your documents have been received
-</p>
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="flex items-center">
-
-
-<div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center">
-✓
-</div>
-
-
-<div class="ml-4">
-
-<h3 class="font-bold">
-AI Review Complete
-</h3>
-
-<p class="text-gray-500">
-Your information has been checked
-</p>
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="flex items-center">
-
-
-<div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
-3
-</div>
-
-
-<div class="ml-4">
-
-<h3 class="font-bold">
-CPA Reviewing Return
-</h3>
-
-<p class="text-gray-500">
-Your CPA is verifying your tax information
-</p>
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="flex items-center">
-
-
-<div class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center">
-4
-</div>
-
-
-<div class="ml-4">
-
-<h3 class="font-bold">
-Filed With IRS
-</h3>
-
-<p class="text-gray-500">
-Waiting for final submission
-</p>
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="bg-white rounded shadow p-6 mt-6">
-
-
-<h3 class="text-xl font-bold mb-3">
-Current Status
-</h3>
-
-
-<p class="text-blue-600 font-semibold">
-CPA Review In Progress
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
+      <p class="text-blue-600 font-semibold">CPA Review In Progress</p>
+    </div>
+  </div>
 {% endblock %}

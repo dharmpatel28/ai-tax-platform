@@ -1,171 +1,61 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 
 {% block page_title %}
-My Documents
+  My Documents
 {% endblock %}
 
-
-
 {% block content %}
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6">My Tax Documents</h2>
 
+    <div class="bg-white rounded shadow p-6 mb-6">
+      <h3 class="text-xl font-bold mb-4">Upload New Document</h3>
 
-<div class="max-w-5xl mx-auto">
+      <form>
+        <input type="file" class="border p-3 rounded w-full" />
 
+        <button class="mt-4 bg-blue-600 text-white px-5 py-2 rounded">Upload</button>
+      </form>
+    </div>
 
-<h2 class="text-2xl font-bold mb-6">
-My Tax Documents
-</h2>
+    <div class="bg-white rounded shadow">
+      <table class="w-full">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="p-4 text-left">Document</th>
 
+            <th>Status</th>
 
+            <th>Date</th>
+          </tr>
+        </thead>
 
+        <tbody>
+          <tr class="border-b">
+            <td class="p-4">W2.pdf</td>
 
-<div class="bg-white rounded shadow p-6 mb-6">
+            <td class="text-green-600">Reviewed</td>
 
+            <td>July 20, 2026</td>
+          </tr>
 
-<h3 class="text-xl font-bold mb-4">
-Upload New Document
-</h3>
+          <tr class="border-b">
+            <td class="p-4">1099.pdf</td>
 
+            <td class="text-green-600">Uploaded</td>
 
-<form>
+            <td>July 22, 2026</td>
+          </tr>
 
+          <tr>
+            <td class="p-4">Mortgage.pdf</td>
 
-<input 
-type="file"
-class="border p-3 rounded w-full"
-/>
+            <td class="text-red-600">Missing</td>
 
-
-
-<button
-class="mt-4 bg-blue-600 text-white px-5 py-2 rounded">
-
-Upload
-
-</button>
-
-
-</form>
-
-
-</div>
-
-
-
-
-
-<div class="bg-white rounded shadow">
-
-
-<table class="w-full">
-
-
-<thead class="bg-gray-200">
-
-<tr>
-
-<th class="p-4 text-left">
-Document
-</th>
-
-<th>
-Status
-</th>
-
-<th>
-Date
-</th>
-
-
-</tr>
-
-</thead>
-
-
-
-<tbody>
-
-
-<tr class="border-b">
-
-
-<td class="p-4">
-W2.pdf
-</td>
-
-
-<td class="text-green-600">
-Reviewed
-</td>
-
-
-<td>
-July 20, 2026
-</td>
-
-
-</tr>
-
-
-
-<tr class="border-b">
-
-
-<td class="p-4">
-1099.pdf
-</td>
-
-
-<td class="text-green-600">
-Uploaded
-</td>
-
-
-<td>
-July 22, 2026
-</td>
-
-
-</tr>
-
-
-
-
-<tr>
-
-
-<td class="p-4">
-Mortgage.pdf
-</td>
-
-
-<td class="text-red-600">
-Missing
-</td>
-
-
-<td>
--
-</td>
-
-
-</tr>
-
-
-
-</tbody>
-
-
-</table>
-
-
-</div>
-
-
-
-</div>
-
-
-
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 {% endblock %}

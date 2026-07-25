@@ -40,11 +40,9 @@
 
     <div class="bg-white rounded shadow mb-8">
       <div class="p-5 border-b">
-  <h2 class="text-xl font-bold">What should you work on right now?</h2>
-  <p class="text-sm text-gray-500 mt-1">
-    Highest-priority items surface first so staff can move from summary into action quickly.
-  </p>
-</div>
+        <h2 class="text-xl font-bold">What should you work on right now?</h2>
+        <p class="text-sm text-gray-500 mt-1">Highest-priority items surface first so staff can move from summary into action quickly.</p>
+      </div>
 
       <table class="w-full">
         <thead class="bg-gray-100">
@@ -91,16 +89,12 @@
               <td>{{ task.status }}</td>
 
               <td>
-  {% if task.owner == 'CPA' %}
-    <a href="{% url 'return_detail' task.id %}" class="bg-gray-900 text-white px-4 py-2 rounded">
-      Review now
-    </a>
-  {% else %}
-    <a href="{% url 'messages' %}?return_id={{ task.id }}" class="bg-blue-600 text-white px-4 py-2 rounded">
-      Follow up
-    </a>
-  {% endif %}
-</td>
+                {% if task.owner == 'CPA' %}
+                  <a href="{% url 'return_detail' task.id %}" class="bg-gray-900 text-white px-4 py-2 rounded">Review now</a>
+                {% else %}
+                  <a href="{% url 'messages' %}?return_id={{ task.id }}" class="bg-blue-600 text-white px-4 py-2 rounded">Follow up</a>
+                {% endif %}
+              </td>
             </tr>
           {% endfor %}
         </tbody>

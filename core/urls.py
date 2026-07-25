@@ -16,19 +16,21 @@ urlpatterns = [
 
     path("documents/", views.documents, name="documents"),
 
-    path("documents/<int:document_id>/", views.document_detail, name="document_detail"),
+    path("documents/<int:document_id>/",
+         views.document_detail, name="document_detail"),
 
-    path("documents/detail/",views.document_detail,name="document_detail"),
-    
-    path("ai-review/<int:id>/",views.ai_review_detail,name="ai_review_detail"),
+    path("documents/detail/", views.document_detail, name="document_detail"),
 
-    path("ai-chat/",views.client_ai_chat,name="client_ai_chat"),
-    
+    path("ai-review/<int:id>/", views.ai_review_detail, name="ai_review_detail"),
+
+    path("ai-chat/", views.client_ai_chat, name="client_ai_chat"),
+
     path("messages/", views.messages, name="messages"),
 
     path("ai-review/", views.ai_review, name="ai_review"),
 
     path("status/", views.status, name="status"),
 
-    path("return-workspace/<int:id>/",views.return_workplace,name="return_workspace"),
+    path("return-workspace/<int:id>/",
+         views.return_workplace, name="return_workspace"),
 ]

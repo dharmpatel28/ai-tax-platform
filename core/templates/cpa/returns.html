@@ -1,152 +1,40 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
+  <h1 class="text-3xl font-bold mb-6">CPA RETURNS PAGE</h1>
 
-<h1 class="text-3xl font-bold mb-6">
-CPA RETURNS PAGE
-</h1>
+  <table class="min-w-full bg-white rounded-lg shadow">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="p-3">ID</th>
+        <th class="p-3">Client</th>
+        <th class="p-3">Tax Year</th>
+        <th class="p-3">Status</th>
+        <th class="p-3">Income</th>
+        <th class="p-3">Confidence</th>
+        <th class="p-3">Assigned CPA</th>
+        <th class="p-3">Due Date</th>
+        <th class="p-3">Action</th>
+      </tr>
+    </thead>
 
-<table class="min-w-full bg-white rounded-lg shadow">
+    <tbody>
+      {% for item in returns %}
+        <tr class="border-t hover:bg-gray-50">
+          <td class="p-3">{{ item.id }}</td>
+          <td class="p-3">{{ item.client }}</td>
+          <td class="p-3">{{ item.tax_year }}</td>
+          <td class="p-3">{{ item.status }}</td>
+          <td class="p-3">${{ item.income }}</td>
+          <td class="p-3">{{ item.confidence }}%</td>
+          <td class="p-3">{{ item.assigned_to }}</td>
+          <td class="p-3">{{ item.due_date }}</td>
 
-<thead class="bg-gray-100">
-
-<tr>
-
-<th class="p-3">ID</th>
-<th class="p-3">Client</th>
-<th class="p-3">Tax Year</th>
-<th class="p-3">Status</th>
-<th class="p-3">Income</th>
-<th class="p-3">Confidence</th>
-<th class="p-3">Assigned CPA</th>
-<th class="p-3">Due Date</th>
-<th class="p-3">Action</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-{% for item in returns %}
-
-<tr class="border-t hover:bg-gray-50">
-
-<td class="p-3">{{ item.id }}</td>
-<td class="p-3">{{ item.client }}</td>
-<td class="p-3">{{ item.tax_year }}</td>
-<td class="p-3">{{ item.status }}</td>
-<td class="p-3">${{ item.income }}</td>
-<td class="p-3">{{ item.confidence }}%</td>
-<td class="p-3">{{ item.assigned_to }}</td>
-<td class="p-3">{{ item.due_date }}</td>
-
-<td class="p-3">
-
-<a
-class="text-blue-600 font-semibold"
-href="{% url 'return_detail' item.id %}">
-
-View Return
-
-</a>
-
-</td>
-
-</tr>
-
-{% endfor %}
-
-</tbody>
-
-</table>
-
+          <td class="p-3">
+            <a class="text-blue-600 font-semibold" href="{% url 'return_detail' item.id %}">View Return</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
-{% comment %} {% extends "base.html" %}
-
-{% block content %}
-
-<div class="container">
-
-    <h1>Tax Returns</h1>
-
-    <table border="1" cellpadding="10">
-
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Client</th>
-                <th>Tax Year</th>
-                <th>Status</th>
-                <th>Income</th>
-                <th>Confidence</th>
-                <th>Assigned CPA</th>
-                <th>Due Date</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-        {% for item in returns %}
-
-        <tr>
-
-            <td>
-                {{ item.id }}
-            </td>
-
-            <td>
-                {{ item.client }}
-            </td>
-
-            <td>
-                {{ item.tax_year }}
-            </td>
-
-            <td>
-                {{ item.status }}
-            </td>
-
-            <td>
-                ${{ item.income }}
-            </td>
-
-            <td>
-                {{ item.confidence }}%
-            </td>
-
-            <td>
-                {{ item.assigned_to }}
-            </td>
-
-            <td>
-                {{ item.due_date }}
-            </td>
-
-            <td>
-                <a href="{% url 'return_detail' item.id %}">
-                    View Return
-                </a>
-            </td>
-
-        </tr>
-
-        {% empty %}
-
-        <tr>
-            <td colspan="9">
-                No returns found
-            </td>
-        </tr>
-
-        {% endfor %}
-
-        </tbody>
-
-    </table>
-
-</div>
-
-{% endblock %} {% endcomment %}
-
